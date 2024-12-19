@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LinkIcon from "../../assets/icons/link-icon.svg";
 
 export type LinkProps = {
@@ -16,7 +15,7 @@ const Link: React.FC<LinkProps> = ({ href, label, className }) => {
       >
         {label}
       </a>
-      <Image src={LinkIcon} alt="" />
+      <LinkIcon className="w-6 h-6 text-blue-500" />
     </div>
   );
 };
