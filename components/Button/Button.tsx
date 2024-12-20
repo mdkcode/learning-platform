@@ -1,21 +1,24 @@
-export type ButtonProps = {
+import { ButtonType, defaultClassName } from "./utils";
+import clsx from "clsx";
+
+export interface ButtonProps {
   label: string;
-  onClick?: () => void;
+  onClick: () => void;
   className?: string;
-  primary?: boolean;
-};
+  buttonType?: ButtonType;
+}
 
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   className,
-  primary,
+  buttonType = ButtonType.SECONDARY,
 }) => {
-  const defaultClassName = primary
-    ? "px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-    : "px-6 py-2 border-2 border-solid border-blue-500 bg-white text-blue-500 font-semibold rounded-lg hover:text-blue-700 hover:border-blue-700";
   return (
-    <button onClick={onClick} className={`${defaultClassName} ${className}`}>
+    <button
+      onClick={onClick}
+      className={clsx(defaultClassName[buttonType], className)}
+    >
       {label}
     </button>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import Button, { ButtonProps } from "./Button";
+import { ButtonType } from "./utils";
 
 export default {
   title: "components/Button",
@@ -12,7 +13,7 @@ const Template: StoryFn<ButtonProps> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   label: "Click Me",
-  primary: true,
+  buttonType: ButtonType.PRIMARY,
 };
 
 export const Secondary = Template.bind({});

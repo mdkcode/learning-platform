@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
-const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+import { Configuration } from "webpack";
 
 const config: StorybookConfig = {
   stories: [
@@ -18,29 +18,27 @@ const config: StorybookConfig = {
     options: {},
   },
   docs: {
-    autodocs: true, // Generate docs automatically for each story
+    autodocs: true,
   },
   core: {
     builder: "@storybook/builder-webpack5",
   },
-  // staticDirs: ["../public"],
-  webpackFinal: async (config) => {
+  webpackFinal: async (config: Configuration) => {
     const imageRule = config.module?.rules?.find((rule) => {
-      const test = (rule as { test: RegExp }).test;
-
+      const test = (rule as { test?: RegExp }).test;
       if (!test) {
         return false;
       }
-
       return test.test(".svg");
-    }) as { [key: string]: any };
-
-    imageRule.exclude = /\.svg$/;
-
-    config.module?.rules?.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
     });
+
+    if (imageRule) {
+      (imageRule as { exclude?: RegExp }).exclude = /\.svg$/;
+      config.module?.rules?.push({
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      });
+    }
 
     return config;
   },

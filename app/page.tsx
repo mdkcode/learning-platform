@@ -1,5 +1,5 @@
+"use client";
 import Button from "@/components/Button/Button";
-import Link from "@/components/Link/Link";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <h1 className="text-3xl text-center mt-6 font-bold text-gray-900">
         Learning center for math students
       </h1>
-      <Button label="Get started" className="mt-6" />
+      <Button label="Get started" className="mt-6" onClick={() => {}} />
     </div>
   );
 }

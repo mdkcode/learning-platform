@@ -13,7 +13,11 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      "@typescript-eslint/no-unused-vars": "off", // Disable the unused-vars rule
+      "@typescript-eslint/no-unused-vars": "off",
+      "react/jsx-max-props-per-line": ["error", { maximum: 3 }],
+      "react/jsx-indent": ["error", 2],
+      "react/jsx-indent-props": ["error", 2],
+      "react/jsx-closing-bracket-location": ["error", "line-aligned"],
     },
   },
 ];

@@ -1,10 +1,10 @@
-import LinkIcon from "../../assets/icons/link-icon.svg";
+import Icon from "components/Icon/Icon";
 
-export type LinkProps = {
+export interface LinkProps {
   href: string;
   label: string;
   className?: string;
-};
+}
 
 const Link: React.FC<LinkProps> = ({ href, label, className }) => {
   return (
@@ -15,7 +15,7 @@ const Link: React.FC<LinkProps> = ({ href, label, className }) => {
       >
         {label}
       </a>
-      <LinkIcon className="w-6 h-6 text-blue-500" />
+      <Icon name="link" />
     </div>
   );
 };
