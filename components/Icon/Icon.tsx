@@ -1,9 +1,9 @@
 import React from "react";
-import { IconDictionary } from "./icons";
+import { IconDictionary, IconName } from "./icons";
 import clsx from "clsx";
 
 interface IconProps {
-  name: keyof typeof IconDictionary;
+  name: IconName;
   size?: string;
   color?: string;
   className?: string;
@@ -14,7 +14,7 @@ const Icon: React.FC<IconProps> = ({
   size = "w-6 h-6",
   color = "text-blue-500",
   className,
-}) => {
+}: IconProps) => {
   const IconComponent = IconDictionary[name];
 
   return <IconComponent className={clsx(size, color, className)} />;
