@@ -1,6 +1,7 @@
 import LinkIcon from "assets/icons/link-icon.svg";
+import { FC, SVGProps } from "react";
 
-export const IconDictionary = {
+export const IconDictionary: { [key: string]: FC<SVGProps<SVGSVGElement>> } = {
   link: LinkIcon,
 };
 
