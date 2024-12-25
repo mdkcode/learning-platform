@@ -9,7 +9,7 @@ export default {
 
 const Template: StoryFn<LinkProps> = (args) => <Link {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Default = Template.bind({});
+Default.args = {
   label: "Link somewhere",
 };

@@ -18,5 +18,11 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: "Submit",
+  label: "Go back",
+};
+
+export const Navigation = Template.bind({});
+Navigation.args = {
+  label: "Redirect",
+  buttonType: ButtonType.NAVIGATION,
 };

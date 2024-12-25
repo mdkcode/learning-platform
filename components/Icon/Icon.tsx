@@ -2,7 +2,7 @@ import React from "react";
 import { IconDictionary, IconName } from "./icons";
 import clsx from "clsx";
 
-interface IconProps {
+export interface IconProps {
   name: IconName;
   size?: string;
   color?: string;
