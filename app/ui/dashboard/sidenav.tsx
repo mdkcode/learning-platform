@@ -1,0 +1,33 @@
+import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+
+export default function SideNav() {
+  const menu = [
+    {
+      label: "Home",
+      href: "/dashboard",
+    },
+    {
+      label: "My courses",
+      href: "/dashboard/courses",
+    },
+  ];
+  return (
+    <div className="flex h-screen flex-col py-4 md:px-2 w bg-[#00004B] text-white w-[10%] text-center">
+      <h1 className="text-2xl font-bold my-1 bg-gradient-to-r from-orange-400 to-pink-500 inline-block text-transparent bg-clip-text">
+        SkillEd
+      </h1>
+      {menu.map(({ label, href }) => (
+        <Link key={label} href={href}>
+          <p className="font-medium text-lg my-4">{label}</p>
+        </Link>
+      ))}
+      <Link href="/">
+        <div className="flex justify-center gap-1 items-center">
+          <p className="font-medium text-lg my-4">Exit</p>
+          <ArrowRightStartOnRectangleIcon className="size-6" />
+        </div>
+      </Link>
+    </div>
+  );
+}

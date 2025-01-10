@@ -18,7 +18,7 @@ const NavButton = ({
       label="Get started"
       buttonType={buttonType || ButtonType.NAVIGATION}
       className={className}
-      onClick={() => router.push(link || "/account")}
+      onClick={() => router.push(link || "/dashboard")}
     />
   );
 };

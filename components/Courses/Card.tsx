@@ -16,7 +16,7 @@ const Card = ({ title, content, iconName }: CardProps) => {
       </div>
       <h5 className="text-3xl font-bold text-[#00004B]">{title}</h5>
       <p className="text-lg text-gray-500">{content}</p>
-      <Link href="/account" className="text-xl font-bold text-pink-500">
+      <Link href="/dashboard" className="text-xl font-bold text-pink-500">
         Get started
       </Link>
     </div>
