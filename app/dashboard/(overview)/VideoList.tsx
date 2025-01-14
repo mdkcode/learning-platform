@@ -9,7 +9,7 @@ export interface CourseVideoProps {
   description: string;
 }
 
-const VideoList = () => {
+export function VideoList() {
   const [videos, setVideos] = useState<CourseVideoProps[]>([]);
 
   useEffect(() => {
@@ -26,12 +26,10 @@ const VideoList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex gap-4">
       {videos.map((video) => (
         <CourseCard key={video.id} {...video} />
       ))}
     </div>
   );
-};
-
-export default VideoList;
+}
