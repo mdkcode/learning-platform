@@ -6,7 +6,7 @@ export const CourseCard = ({
   description,
 }: Omit<CourseVideoProps, "id">) => {
   return (
-    <div className="w-[400px] inline-block rounded-lg p-5 bg-gradient-to-b bg-gradient-to-b from-gray-100 via-gray-200 to-purple-300">
+    <div className="w-[400px] inline-block rounded-lg p-5 bg-gradient-to-b bg-gray-200">
       <h3 className="text-xl font-bold my-2">{title}</h3>
       <p className="mb-3">{description}</p>
       <video controls width="320" height="240">

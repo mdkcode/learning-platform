@@ -26,7 +26,7 @@ export function VideoList() {
   }, []);
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-5">
       {videos.map((video) => (
         <CourseCard key={video.id} {...video} />
       ))}
