@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Math for Beginners Course Introduction",
+    "url": "/videos/course1.mp4",
+    "thumbnail": "https://www.example.com/thumbnails/video1.jpg",
+    "description": "Learn how to get started with math course and excel at school, available for everyone."
+  },
+  {
+    "id": 2,
+    "title": "Advanced Math Course Introduction",
+    "url": "/videos/course2.mp4",
+    "thumbnail": "https://www.example.com/thumbnails/video2.jpg",
+    "description": "Advanced course for people pursuing math at highschool/university. Contains Calculus and Trigonometry lessons as well."
+  }
+]

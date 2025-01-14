@@ -1,9 +1,10 @@
 "use client";
+import { Routes } from "@/app/routes/routes";
 import Button from "@/components/Button/Button";
 import { ButtonType } from "@/components/Button/utils";
 import { useRouter } from "next/navigation";
 
-const NavButton = ({
+export const NavButton = ({
   className,
   buttonType,
   link,
@@ -16,11 +17,9 @@ const NavButton = ({
   return (
     <Button
       label="Get started"
-      buttonType={buttonType || ButtonType.NAVIGATION}
+      buttonType={buttonType ?? ButtonType.NAVIGATION}
       className={className}
-      onClick={() => router.push(link || "/dashboard")}
+      onClick={() => router.push(link ?? Routes.DASHBOARD)}
     />
   );
 };
-
-export default NavButton;

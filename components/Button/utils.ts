@@ -4,7 +4,7 @@ export enum ButtonType {
   NAVIGATION = "navigation",
 }
 
-export const defaultClassName = {
+export const defaultButtonClassName = {
   [ButtonType.PRIMARY]:
     "px-7 py-3 bg-[#00004B] text-white font-semibold rounded-lg shadow-md hover:bg-[#3A59FF] focus:outline-none focus:ring-2 focus:ring-[#3A59FF]",
   [ButtonType.SECONDARY]:

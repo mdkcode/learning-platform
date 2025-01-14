@@ -1,11 +1,11 @@
-import { ButtonType, defaultClassName } from "./utils";
+import { ButtonType, defaultButtonClassName } from "./utils";
 import clsx from "clsx";
 
 export interface ButtonProps {
   label: string;
   onClick: () => void;
   className?: string;
-  buttonType?: ButtonType;
+  buttonType?: ButtonType; // default value - ButtonType.SECONDARY,
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={clsx(defaultClassName[buttonType], className)}
+      className={clsx(defaultButtonClassName[buttonType], className)}
     >
       {label}
     </button>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NavButton from "../Button/NavButton";
+import { NavButton } from "../Button/NavButton";
 import clsx from "clsx";
 import { ButtonType } from "../Button/utils";
 

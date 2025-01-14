@@ -11,7 +11,7 @@ export interface CardProps {
 const Card = ({ title, content, iconName }: CardProps) => {
   return (
     <div className="w-[400px] h-[400px] bg-white rounded-lg flex flex-col justify-between p-[2rem] pt-[4rem] relative">
-      <div className="top-[-15px]  absolute rounded-full p-3 bg-gradient-to-b from-orange-400 to-pink-500 ">
+      <div className="top-[-15px]  absolute rounded-full p-3 bg-gradient-to-b from-orange-400 to-pink-500">
         <Icon name={iconName} color="text-white" />
       </div>
       <h5 className="text-3xl font-bold text-[#00004B]">{title}</h5>
