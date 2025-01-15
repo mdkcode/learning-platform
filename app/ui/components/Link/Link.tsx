@@ -1,4 +1,4 @@
-import Icon from "components/Icon/Icon";
+import Icon from "@/app/ui/components/Icon/Icon";
 
 export interface LinkProps {
   href: string;

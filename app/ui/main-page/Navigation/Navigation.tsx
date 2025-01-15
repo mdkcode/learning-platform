@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { NavButton } from "../Button/NavButton";
+import { NavButton } from "@/app/ui/components/Button/NavButton";
 import clsx from "clsx";
-import { ButtonType } from "../Button/utils";
+import { ButtonType } from "@/app/ui/components/Button/utils";
+import { Routes } from "@/app/routes/routes";
 
 export interface NavigationProps {
   className?: string;
@@ -21,7 +22,7 @@ const Navigation = ({
         className
       )}
     >
-      <Link href="/">
+      <Link href={Routes.HOME}>
         <h4 className="text-2xl font-extrabold">SkillEd</h4>
       </Link>
       <NavButton className={buttonClassName} buttonType={buttonType} />

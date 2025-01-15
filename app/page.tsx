@@ -1,7 +1,7 @@
-import { ButtonType } from "@/components/Button/utils";
-import Courses from "@/components/Courses/Courses";
-import MainPage from "@/components/MainPage/MainPage";
-import Navigation from "@/components/Navigation/Navigation";
+import { ButtonType } from "@/app/ui/components/Button/utils";
+import Courses from "@/app/ui/main-page/Courses/Courses";
+import MainPage from "@/app/ui/main-page/MainPage";
+import Navigation from "@/app/ui/main-page/Navigation/Navigation";
 
 export default function Home() {
   return (

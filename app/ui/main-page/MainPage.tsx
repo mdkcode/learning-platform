@@ -1,5 +1,5 @@
-import Stats from "@/components/Stats/Stats";
-import { NavButton } from "../Button/NavButton";
+import Stats from "@/app/ui/main-page/Stats/Stats";
+import { NavButton } from "@/app/ui/components/Button/NavButton";
 import ReadingImg from "assets/img/reading.svg";
 
 const MainPage = () => {

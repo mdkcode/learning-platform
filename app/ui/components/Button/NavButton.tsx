@@ -1,7 +1,7 @@
 "use client";
 import { Routes } from "@/app/routes/routes";
-import Button from "@/components/Button/Button";
-import { ButtonType } from "@/components/Button/utils";
+import Button from "@/app/ui/components/Button/Button";
+import { ButtonType } from "@/app/ui/components/Button/utils";
 import { useRouter } from "next/navigation";
 
 export const NavButton = ({

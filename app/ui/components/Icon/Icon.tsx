@@ -12,7 +12,7 @@ export interface IconProps {
 const Icon: React.FC<IconProps> = ({
   name,
   size = "w-6 h-6",
-  color = "text-blue-500",
+  color = "text-black-500",
   className,
 }: IconProps) => {
   const IconComponent = IconDictionary[name];

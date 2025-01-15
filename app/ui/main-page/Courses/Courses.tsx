@@ -1,4 +1,4 @@
-import { IconName } from "../Icon/icons";
+import { IconName } from "@/app/ui/components/Icon/icons";
 import Card from "./Card";
 
 interface CourseProps {

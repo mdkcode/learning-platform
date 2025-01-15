@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import Navigation, { NavigationProps } from "./Navigation";
-import { ButtonType } from "components/Button/utils";
+import { ButtonType } from "@/app/ui/components/Button/utils";
 
 export default {
   title: "components/Navigation",

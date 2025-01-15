@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Icon from "../Icon/Icon";
-import { IconName } from "../Icon/icons";
+import Icon from "@/app/ui/components/Icon/Icon";
+import { IconName } from "@/app/ui/components/Icon/icons";
+import { Routes } from "@/app/routes/routes";
 
 export interface CardProps {
   title: string;
@@ -16,7 +17,7 @@ const Card = ({ title, content, iconName }: CardProps) => {
       </div>
       <h5 className="text-3xl font-bold text-[#00004B]">{title}</h5>
       <p className="text-lg text-gray-500">{content}</p>
-      <Link href="/dashboard" className="text-xl font-bold text-pink-500">
+      <Link href={Routes.DASHBOARD} className="text-xl font-bold text-pink-500">
         Get started
       </Link>
     </div>
