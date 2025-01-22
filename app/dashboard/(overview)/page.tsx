@@ -1,11 +1,13 @@
-import { VideoList } from "./VideoList";
-
+import CoursesList from "@/app/dashboard/(overview)/CoursesList";
+import { UserGreeting } from "./UserGreeting";
+import SearchAndFilter from "./SearchAndFilter";
 export default function Page() {
   return (
     <main>
-      <h1 className="my-5 text-3xl font-bold">Welcome</h1>
+      <UserGreeting />
       <h1 className="text-2xl mb-5">Take a look at the available courses</h1>
-      <VideoList />
+      <SearchAndFilter />
+      <CoursesList />
     </main>
   );
 }
