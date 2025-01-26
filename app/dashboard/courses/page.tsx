@@ -1,9 +1,3 @@
-import SubscribedCourses from "./SubscribedCourses";
-
 export default function Page() {
-  return (
-    <>
-      <SubscribedCourses />
-    </>
-  );
+  return <div>No Courses yet</div>;
 }

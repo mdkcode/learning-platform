@@ -1,19 +1,11 @@
-import { CourseProps } from "@/app/dashboard/(overview)/CoursesList";
+import { CourseVideoProps } from "../dashboard/(overview)/CoursesList";
 
-export async function getCourseVideos(query?: string) {
+export async function getCourseVideos() {
   try {
     const response = await fetch(
-      `https://${process.env.API_SECRET!}.mockapi.io/api/v1/courses/courses`
+      "https://678df745a64c82aeb11e7a2b.mockapi.io/api/v1/courses/courses"
     );
-    const videos: CourseProps[] = await response.json();
-    if (query && query.trim() !== "") {
-      const lowercasedQuery = query.toLowerCase();
-      return videos.filter(({ title, description }) =>
-        [title.toLowerCase(), description.toLowerCase()].some((field) =>
-          field.includes(lowercasedQuery)
-        )
-      );
-    }
+    const videos: CourseVideoProps[] = await response.json();
     return videos;
   } catch (error) {
     return [];

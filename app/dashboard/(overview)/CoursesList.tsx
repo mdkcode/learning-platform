@@ -8,12 +8,8 @@ export interface CourseProps {
   description: string;
 }
 
-export default async function CoursesList({
-  searchQuery,
-}: {
-  searchQuery?: string;
-}) {
-  const videos = await getCourseVideos(searchQuery);
+export default async function CoursesList() {
+  const videos = await getCourseVideos();
   return (
     <div className="flex gap-5 flex-wrap">
       {videos?.map((video: CourseProps) => (
