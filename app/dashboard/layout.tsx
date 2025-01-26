@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { MobileHeader } from "../ui/dashboard/MobileHeader";
-import SideNav from "../ui/dashboard/SideNav";
+import SideNav from "../ui/dashboard/sidenav";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Routes } from "../routes/routes";
