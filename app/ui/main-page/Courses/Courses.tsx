@@ -1,5 +1,5 @@
 import { IconName } from "@/app/ui/components/Icon/icons";
-import Card from "@/app/ui/main-page/Courses/Card";
+import Card from "./Card";
 
 interface CourseProps {
   title: string;

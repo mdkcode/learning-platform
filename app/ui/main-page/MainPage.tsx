@@ -1,9 +1,6 @@
-"use client";
 import Stats from "@/app/ui/main-page/Stats/Stats";
+import { NavButton } from "@/app/ui/components/Button/NavButton";
 import ReadingImg from "assets/img/reading.svg";
-import Button from "@/app/ui/components/Button/Button";
-import { ButtonType } from "../components/Button/utils";
-import { handleSignIn } from "@/app/api/auth/[...nextauth]/auth";
 
 const MainPage = () => {
   return (
@@ -16,12 +13,7 @@ const MainPage = () => {
           Our modern courses across a range of in-demand skills will give you
           the knowledge you need the life you want.
         </p>
-        <Button
-          label="Get started"
-          buttonType={ButtonType.NAVIGATION}
-          className="bg-gradient-to-r from-orange-400 to-pink-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-600"
-          onClick={() => handleSignIn()}
-        />
+        <NavButton className="bg-gradient-to-r from-orange-400 to-pink-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-600" />
       </div>
       <div className="relative">
         <Stats

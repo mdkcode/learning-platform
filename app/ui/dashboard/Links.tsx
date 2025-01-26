@@ -1,6 +1,6 @@
 import { Routes } from "@/app/routes/routes";
 import Link from "next/link";
-import Icon from "@/app/ui/components/Icon/Icon";
+import Icon from "../components/Icon/Icon";
 
 const menu = [
   {

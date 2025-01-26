@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Icon from "@/app/ui/components/Icon/Icon";
-import { Logo } from "@/app/ui/dashboard/Logo";
-import { Links } from "@/app/ui/dashboard/Links";
+import Icon from "../components/Icon/Icon";
+import { Logo } from "./Logo";
+import { Links } from "./Links";
 
 export function MobileHeader() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
