@@ -8,6 +8,7 @@ export const CourseCard = ({ id, title, description }: CourseProps) => {
   const [subscribedCourses, setSubscribedCourses] = useState<Set<number>>(
     new Set(JSON.parse(localStorage.getItem("subscriptions") || "[]"))
   );
+  const isSubscribed = subscribedCourses.has(id);
 
   useEffect(() => {
     localStorage.setItem(
@@ -34,7 +35,11 @@ export const CourseCard = ({ id, title, description }: CourseProps) => {
       <h3 className="text-xl font-bold my-2">{title}</h3>
       <p className="mb-8">{description}</p>
       <div className="absolute bottom-3">
-        <Link href={Routes.COURSES} label="Subscribe" />
+        {isSubscribed ? (
+          <Link href={Routes.COURSES} label="Go to my courses" />
+        ) : (
+          <p className="text-lg text-blue-500">Subscribe</p>
+        )}
       </div>
     </div>
   );
