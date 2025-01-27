@@ -4,23 +4,22 @@ import { useEffect, useState } from "react";
 import Link from "@/app/ui/components/Link/Link";
 import { Routes } from "@/app/routes/routes";
 
-export const CourseCard = ({ id, title, description }: CourseProps) => {
-  const [subscribedCourses, setSubscribedCourses] = useState<Set<number>>(
-    new Set(JSON.parse(localStorage.getItem("subscriptions") || "[]"))
+export const CourseCard = ({ id, title, description, url }: CourseProps) => {
+  const [subscribedCourses, setSubscribedCourses] = useState<CourseProps[]>(
+    JSON.parse(localStorage.getItem("subscriptions") || "[]")
   );
-  const isSubscribed = subscribedCourses.has(id);
+  const isSubscribed = subscribedCourses.some((course) => course.id === id);
 
   useEffect(() => {
-    localStorage.setItem(
-      "subscriptions",
-      JSON.stringify([...subscribedCourses])
-    );
+    localStorage.setItem("subscriptions", JSON.stringify(subscribedCourses));
   }, [subscribedCourses]);
 
   const handleSubscribe = () => {
     setSubscribedCourses((prevSubscriptions) => {
-      const newSubscriptions = new Set(prevSubscriptions);
-      newSubscriptions.add(id);
+      const newSubscriptions = [...prevSubscriptions];
+      if (!newSubscriptions.some((course) => course.id === id)) {
+        newSubscriptions.push({ id, title, description, url });
+      }
       return newSubscriptions;
     });
   };
