@@ -31,7 +31,7 @@ const Navigation = ({
         label="Get started"
         buttonType={ButtonType.NAVIGATION}
         className={buttonClassName}
-        onClick={() => handleSignIn()}
+        onClick={handleSignIn}
       />
     </div>
   );

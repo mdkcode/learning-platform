@@ -20,7 +20,7 @@ const MainPage = () => {
           label="Get started"
           buttonType={ButtonType.NAVIGATION}
           className="bg-gradient-to-r from-orange-400 to-pink-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-pink-600"
-          onClick={() => handleSignIn()}
+          onClick={handleSignIn}
         />
       </div>
       <div className="relative">

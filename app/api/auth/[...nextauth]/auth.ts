@@ -5,8 +5,8 @@ enum AuthProvider {
   Google = "google",
 }
 
-export const handleSignIn = (link?: string) => {
+export const handleSignIn = () => {
   signIn(AuthProvider.Google, {
-    callbackUrl: link ?? Routes.DASHBOARD,
+    callbackUrl: Routes.DASHBOARD,
   });
 };
