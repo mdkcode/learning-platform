@@ -1,14 +1,11 @@
+import { NextPageProps } from "@/app/api/general/general.interface";
 import CoursesList from "@/app/dashboard/(overview)/CoursesList";
 import { UserGreeting } from "@/app/dashboard/(overview)/UserGreeting";
 import Search from "@/app/ui/components/Search/Search";
 import { Suspense } from "react";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: { search?: string };
-}) {
-  const { search: searchQuery } = (await searchParams) ?? {};
+export default async function Page({ searchParams }: NextPageProps) {
+  const searchQuery = searchParams?.search;
 
   return (
     <main>
