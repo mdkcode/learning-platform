@@ -5,7 +5,7 @@ import Search from "@/app/ui/components/Search/Search";
 import { Suspense } from "react";
 
 export default async function Page({ searchParams }: NextPageProps) {
-  const searchQuery = searchParams?.search;
+  const { search: searchQuery } = (await searchParams) ?? {};
 
   return (
     <main>
