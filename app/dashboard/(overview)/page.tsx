@@ -1,11 +1,23 @@
-import { VideoList } from "./VideoList";
+import CoursesList from "@/app/dashboard/(overview)/CoursesList";
+import { UserGreeting } from "@/app/dashboard/(overview)/UserGreeting";
+import Search from "@/app/ui/components/Search/Search";
+import { Suspense } from "react";
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { search?: string };
+}) {
+  const { search: searchQuery } = (await searchParams) ?? {};
+
   return (
     <main>
-      <h1 className="my-5 text-3xl font-bold">Welcome</h1>
+      <UserGreeting />
       <h1 className="text-2xl mb-5">Take a look at the available courses</h1>
-      <VideoList />
+      <Search />
+      <Suspense key={searchQuery} fallback={<p>Loading...</p>}>
+        <CoursesList searchQuery={searchQuery} />
+      </Suspense>
     </main>
   );
 }

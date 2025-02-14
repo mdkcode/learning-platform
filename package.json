@@ -13,11 +13,13 @@
   "dependencies": {
     "@heroicons/react": "2.2.0",
     "clsx": "2.1.1",
+    "firebase": "^11.3.0",
     "heroicons": "2.2.0",
     "next": "15.1.0",
     "next-auth": "4.24.11",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "use-debounce": "10.0.4"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",

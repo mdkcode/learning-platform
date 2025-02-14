@@ -1,5 +1,5 @@
 import React from "react";
-import { IconDictionary, IconName } from "./icons";
+import { IconDictionary, IconName } from "@/app/ui/components/Icon/icons";
 import clsx from "clsx";
 
 export interface IconProps {
