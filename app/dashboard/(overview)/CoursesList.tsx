@@ -1,4 +1,4 @@
-import { getCourseVideos } from "@/app/api/courses/courses.api";
+import { getCourseList } from "@/app/api/courses/courses.api";
 import {
   CourseProps,
   CourseSearchParams,
@@ -6,7 +6,7 @@ import {
 import { CourseCard } from "@/app/ui/dashboard/CourseCard";
 
 export default async function CoursesList({ searchQuery }: CourseSearchParams) {
-  const videos = await getCourseVideos(searchQuery);
+  const videos = await getCourseList(searchQuery);
 
   return (
     <div className="flex gap-5 flex-wrap">
