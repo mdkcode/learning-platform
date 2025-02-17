@@ -3,7 +3,7 @@ import { db } from "@/app/configs/firebase/firebase";
 import { CourseProps } from "@/app/api/courses/courses.interface";
 import { convertTimestampToDateString } from "@/app/configs/utils/format";
 
-export async function getCourseVideos(queryStr?: string) {
+export async function getCourseList(queryStr?: string) {
   try {
     const coursesRef = collection(db, "courses");
     const coursesQuery = queryStr
