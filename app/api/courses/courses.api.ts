@@ -5,7 +5,7 @@ import { convertTimestampToDateString } from "@/app/configs/utils/format";
 
 export async function getCourseList(queryStr?: string) {
   try {
-    const coursesRef = collection(db, "courses");
+    const coursesRef = collection(db, "courss");
     const coursesQuery = queryStr
       ? query(
           coursesRef,
@@ -24,4 +24,18 @@ export async function getCourseList(queryStr?: string) {
   } catch (error) {
     throw error;
   }
+}
+
+export async function getUserCourseSubscriptions(userId: string) {
+  const subscriptionsRef = collection(db, "subscriptions");
+  const subscriptionsQuery = query(
+    subscriptionsRef,
+    where("userId", "==", userId)
+  );
+  const querySnapshot = await getDocs(subscriptionsQuery);
+  // Get the list of course IDs the user is subscribed to
+  const subscribedCourseIds = querySnapshot.docs.map(
+    (doc) => doc.data().courseId
+  );
+  return subscribedCourseIds;
 }

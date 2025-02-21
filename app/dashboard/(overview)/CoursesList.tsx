@@ -1,18 +1,42 @@
+// import { getCourseList } from "@/app/api/courses/courses.api";
+// import { CourseSearchParams } from "@/app/api/courses/courses.interface";
+// import getQueryClient from "@/app/configs/utils/get-query-client";
+// import Hydrate from "@/app/configs/utils/hydrate-client";
+// import { CourseCardsList } from "@/app/ui/dashboard/CourseCard";
+// import { dehydrate } from "react-query";
+
+// export default async function CoursesList({ searchQuery }: CourseSearchParams) {
+//   const queryClient = getQueryClient();
+//   await queryClient.prefetchQuery(["courses", searchQuery], () =>
+//     getCourseList(searchQuery)
+//   );
+//   const dehydratedState = dehydrate(queryClient);
+//   // const videos = await getCourseList(searchQuery);
+
+//   return (
+//     <Hydrate state={dehydratedState}>
+//       <CourseCardsList searchQuery={searchQuery} />
+//     </Hydrate>
+//   );
+// }
+
 import { getCourseList } from "@/app/api/courses/courses.api";
-import {
-  CourseProps,
-  CourseSearchParams,
-} from "@/app/api/courses/courses.interface";
-import { CourseCard } from "@/app/ui/dashboard/CourseCard";
+import { CourseSearchParams } from "@/app/api/courses/courses.interface";
+import getQueryClient from "@/app/configs/utils/get-query-client";
+import { dehydrate } from "react-query";
+import { CourseCardsList } from "@/app/ui/dashboard/CourseCard";
 
 export default async function CoursesList({ searchQuery }: CourseSearchParams) {
-  const videos = await getCourseList(searchQuery);
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery(["courses", searchQuery], () =>
+    getCourseList(searchQuery)
+  );
+  const dehydratedState = dehydrate(queryClient);
 
   return (
-    <div className="flex gap-5 flex-wrap">
-      {videos?.map((video: CourseProps) => (
-        <CourseCard key={video.id} {...video} />
-      ))}
-    </div>
+    <CourseCardsList
+      dehydratedState={dehydratedState}
+      searchQuery={searchQuery}
+    />
   );
 }

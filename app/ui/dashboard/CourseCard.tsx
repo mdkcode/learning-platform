@@ -1,5 +1,34 @@
 "use client";
-import { CourseProps } from "@/app/api/courses/courses.interface";
+import { getCourseList } from "@/app/api/courses/courses.api";
+import {
+  CourseProps,
+  CourseSearchParams,
+} from "@/app/api/courses/courses.interface";
+import { DehydratedState, Hydrate, useQuery } from "react-query";
+
+interface CourseCardsListClientProps extends CourseSearchParams {
+  dehydratedState: DehydratedState;
+}
+
+export const CourseCardsList = ({
+  searchQuery,
+  dehydratedState,
+}: CourseCardsListClientProps) => {
+  const { data: videos } = useQuery({
+    queryKey: ["courses", searchQuery],
+    queryFn: () => getCourseList(searchQuery),
+  });
+
+  return (
+    <Hydrate state={dehydratedState}>
+      <div className="flex gap-5 flex-wrap">
+        {videos?.map((video: CourseProps) => (
+          <CourseCard key={video.id} {...video} />
+        ))}
+      </div>
+    </Hydrate>
+  );
+};
 
 export const CourseCard = ({ name, description }: CourseProps) => {
   return (

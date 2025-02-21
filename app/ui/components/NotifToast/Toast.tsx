@@ -1,13 +1,24 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
+const DEFAULT_TOAST_DURATION = 3000;
+
 interface ToastProps {
   message: string;
+  /**
+   If not provided, the default duration is used.
+   * {@link DEFAULT_TOAST_DURATION} (3000ms or 3 seconds)
+   */
   duration?: number;
   onClose?: () => void;
 }
 
-const Toast: React.FC<ToastProps> = ({ message, duration = 3000, onClose }) => {
+const Toast: React.FC<ToastProps> = ({
+  message,
+  duration = DEFAULT_TOAST_DURATION,
+  onClose,
+}) => {
   const toastRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

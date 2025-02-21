@@ -25,16 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionProvider>
-      <ReactQueryProvider>
-        <html lang="en">
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-            {children}
-          </body>
-        </html>
-      </ReactQueryProvider>
-    </SessionProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <SessionProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }
