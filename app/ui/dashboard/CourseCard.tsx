@@ -4,7 +4,11 @@ import {
   CourseProps,
   CourseSearchParams,
 } from "@/app/api/courses/courses.interface";
-import { DehydratedState, Hydrate, useQuery } from "react-query";
+import {
+  DehydratedState,
+  HydrationBoundary,
+  useQuery,
+} from "@tanstack/react-query";
 
 interface CourseCardsListClientProps extends CourseSearchParams {
   dehydratedState: DehydratedState;
@@ -20,13 +24,13 @@ export const CourseCardsList = ({
   });
 
   return (
-    <Hydrate state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState}>
       <div className="flex gap-5 flex-wrap">
         {videos?.map((video: CourseProps) => (
           <CourseCard key={video.id} {...video} />
         ))}
       </div>
-    </Hydrate>
+    </HydrationBoundary>
   );
 };
 

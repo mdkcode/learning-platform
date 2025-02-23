@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { useErrorHandler } from "@/app/configs/hooks/useErrorHandler";
 
 interface ReactQueryProviderProps {
@@ -16,13 +16,15 @@ export const ReactQueryProvider: React.FC<ReactQueryProviderProps> = ({
       new QueryClient({
         defaultOptions: {
           queries: {
-            onError: onError,
+            // throwOnError(error, query) {
+            //   onError(error)
+            // },
           },
         },
       })
   );
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}> {children}</QueryClientProvider>
   );
 };

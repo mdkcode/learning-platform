@@ -5,7 +5,7 @@ import { convertTimestampToDateString } from "@/app/configs/utils/format";
 
 export async function getCourseList(queryStr?: string) {
   try {
-    const coursesRef = collection(db, "courss");
+    const coursesRef = collection(db, "courses");
     const coursesQuery = queryStr
       ? query(
           coursesRef,
