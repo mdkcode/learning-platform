@@ -1,13 +1,12 @@
 "use client";
-import { ToastPortal } from "@/app/ui/components/NotifToast/Toast";
+import { toast } from "react-toastify";
 
 export const useErrorHandler = () => {
-  const handleError = (err: unknown) => {
-    return (
-      <ToastPortal
-        message={err?.toString() ?? "An error occured during data retrieval."}
-      />
-    );
+  const handleError = (err: Error) => {
+    if (err)
+      toast.error(err.message, {
+        position: "top-center",
+      });
   };
 
   return handleError;

@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/app/configs/firebase/firebase";
 import { CourseProps } from "@/app/api/courses/courses.interface";
 import { convertTimestampToDateString } from "@/app/configs/utils/format";
@@ -27,15 +27,46 @@ export async function getCourseList(queryStr?: string) {
 }
 
 export async function getUserCourseSubscriptions(userId: string) {
-  const subscriptionsRef = collection(db, "subscriptions");
-  const subscriptionsQuery = query(
-    subscriptionsRef,
-    where("userId", "==", userId)
-  );
-  const querySnapshot = await getDocs(subscriptionsQuery);
-  // Get the list of course IDs the user is subscribed to
-  const subscribedCourseIds = querySnapshot.docs.map(
-    (doc) => doc.data().courseId
-  );
-  return subscribedCourseIds;
+  try {
+    const subscriptionsRef = collection(db, "subscriptions");
+    const subscriptionsQuery = query(
+      subscriptionsRef,
+      where("userId", "==", userId)
+    );
+    const querySnapshot = await getDocs(subscriptionsQuery);
+    // Get the list of course IDs the user is subscribed to
+    const subscribedCourseIds = querySnapshot.docs.map(
+      (doc) => doc.data().courseId
+    );
+    return subscribedCourseIds;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function subscribeToCourseById(data: {
+  courseId: string;
+  subscribedAt: Date;
+  userId: string;
+}) {
+  try {
+    const { courseId, subscribedAt, userId } = data;
+    const subscriptionsRef = collection(db, "subscriptions");
+    const subscriptionsQuery = query(
+      subscriptionsRef,
+      where("userId", "==", userId),
+      where("courseId", "==", courseId)
+    );
+    const querySnapshot = await getDocs(subscriptionsQuery);
+    if (!querySnapshot.empty) {
+      throw new Error("You are already subscribed");
+    }
+    await addDoc(subscriptionsRef, {
+      courseId,
+      subscribedAt,
+      userId,
+    });
+  } catch (error) {
+    throw error;
+  }
 }
