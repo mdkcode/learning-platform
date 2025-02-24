@@ -61,11 +61,7 @@ export async function subscribeToCourseById(data: {
     if (!querySnapshot.empty) {
       throw new Error("You are already subscribed");
     }
-    await addDoc(subscriptionsRef, {
-      courseId,
-      subscribedAt,
-      userId,
-    });
+    await addDoc(subscriptionsRef, data);
   } catch (error) {
     throw error;
   }
