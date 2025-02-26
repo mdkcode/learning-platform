@@ -1,18 +1,20 @@
-import { getCourseVideos } from "@/app/api/courses/courses.api";
-import {
-  CourseProps,
-  CourseSearchParams,
-} from "@/app/api/courses/courses.interface";
-import { CourseCard } from "@/app/ui/dashboard/CourseCard";
+import { getCourseList } from "@/app/api/courses/courses.api";
+import { CourseSearchParams } from "@/app/api/courses/courses.interface";
+import getQueryClient from "@/app/configs/utils/get-query-client";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { CourseCardsList } from "@/app/ui/dashboard/CourseCard";
 
 export default async function CoursesList({ searchQuery }: CourseSearchParams) {
-  const videos = await getCourseVideos(searchQuery);
+  const queryClient = getQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["courses", searchQuery],
+    queryFn: () => getCourseList(searchQuery),
+  });
+  const dehydratedState = dehydrate(queryClient);
 
   return (
-    <div className="flex gap-5 flex-wrap">
-      {videos?.map((video: CourseProps) => (
-        <CourseCard key={video.id} {...video} />
-      ))}
-    </div>
+    <HydrationBoundary state={dehydratedState}>
+      <CourseCardsList searchQuery={searchQuery} />
+    </HydrationBoundary>
   );
 }

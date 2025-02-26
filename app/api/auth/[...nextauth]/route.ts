@@ -29,6 +29,7 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       session.accessToken = (token as CustomJwt)?.accessToken;
+      session.userId = token.sub;
       return session;
     },
     async signIn({ user, account }) {
