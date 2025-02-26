@@ -1,13 +1,8 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import NextAuth from "next-auth";
-import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/app/configs/firebase/firebase";
 import { Roles } from "@/app/configs/utils/roles";
-
-interface CustomJwt extends JWT {
-  accessToken: string;
-}
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET!,
@@ -28,8 +23,10 @@ const handler = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.accessToken = (token as CustomJwt)?.accessToken;
-      session.userId = token.sub;
+      session.accessToken = token.accessToken;
+      if (token.sub) {
+        session.userId = token.sub;
+      }
       return session;
     },
     async signIn({ user, account }) {

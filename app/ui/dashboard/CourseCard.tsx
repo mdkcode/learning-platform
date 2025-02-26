@@ -9,6 +9,7 @@ import {
 } from "@/app/api/courses/courses.interface";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 export const CourseCardsList = ({ searchQuery }: CourseSearchParams) => {
   const { data: videos } = useQuery({
@@ -33,6 +34,14 @@ export const CourseCard = ({ name, description, id }: CourseProps) => {
     { courseId: string; subscribedAt: Date; userId: string }
   >({
     mutationFn: subscribeToCourseById,
+    onSuccess() {
+      toast.success(
+        "You successfully subscribed to the course! Check your courses section",
+        {
+          position: "top-center",
+        }
+      );
+    },
   });
 
   const handleSubscribe = () => {
