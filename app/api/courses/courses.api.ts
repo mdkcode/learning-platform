@@ -5,6 +5,7 @@ import {
   query,
   where,
   documentId,
+  doc,
 } from "firebase/firestore";
 import { db } from "@/app/configs/firebase/firebase";
 import { CourseProps } from "@/app/api/courses/courses.interface";
@@ -96,4 +97,18 @@ export async function getUserSubscribedCourses(userId: string) {
   } catch (error) {
     throw error;
   }
+}
+
+export async function getCourseVideosById(courseId: string) {
+  const courseRef = doc(db, "courses", courseId);
+  // Query videos where course_id matches the course document reference
+  const videosRef = collection(db, "videos");
+  const videosQuery = query(videosRef, where("course_id", "==", courseRef));
+  const querySnapshot = await getDocs(videosQuery);
+  querySnapshot.forEach((doc) => console.log(doc.data()));
+  const videos = querySnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
+  return videos;
 }
