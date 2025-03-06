@@ -8,7 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "@/app/configs/firebase/firebase";
-import { CourseProps } from "@/app/api/courses/courses.interface";
+import { CourseProps, VideoProps } from "@/app/api/courses/courses.interface";
 import { convertTimestampToDateString } from "@/app/configs/utils/format";
 
 export async function getCourseList(queryStr?: string) {
@@ -100,15 +100,12 @@ export async function getUserSubscribedCourses(userId: string) {
 }
 
 export async function getCourseVideosById(courseId: string) {
-  const courseRef = doc(db, "courses", courseId);
-  // Query videos where course_id matches the course document reference
   const videosRef = collection(db, "videos");
-  const videosQuery = query(videosRef, where("course_id", "==", courseRef));
+  const videosQuery = query(videosRef, where("course_id", "==", courseId));
   const querySnapshot = await getDocs(videosQuery);
-  querySnapshot.forEach((doc) => console.log(doc.data()));
   const videos = querySnapshot.docs.map((doc) => ({
     ...doc.data(),
     id: doc.id,
   }));
-  return videos;
+  return videos as VideoProps[];
 }
