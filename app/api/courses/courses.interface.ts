@@ -10,3 +10,11 @@ export interface CourseProps {
   created_at: string;
   duration: number;
 }
+
+export interface VideoProps {
+  id: string;
+  video_url: string;
+  title: string;
+  duration: number;
+  order: number;
+}

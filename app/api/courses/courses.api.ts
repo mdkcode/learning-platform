@@ -5,9 +5,10 @@ import {
   query,
   where,
   documentId,
+  doc,
 } from "firebase/firestore";
 import { db } from "@/app/configs/firebase/firebase";
-import { CourseProps } from "@/app/api/courses/courses.interface";
+import { CourseProps, VideoProps } from "@/app/api/courses/courses.interface";
 import { convertTimestampToDateString } from "@/app/configs/utils/format";
 
 export async function getCourseList(queryStr?: string) {
@@ -96,4 +97,15 @@ export async function getUserSubscribedCourses(userId: string) {
   } catch (error) {
     throw error;
   }
+}
+
+export async function getCourseVideosById(courseId: string) {
+  const videosRef = collection(db, "videos");
+  const videosQuery = query(videosRef, where("course_id", "==", courseId));
+  const querySnapshot = await getDocs(videosQuery);
+  const videos = querySnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
+  return videos as VideoProps[];
 }
