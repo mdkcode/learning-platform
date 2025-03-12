@@ -6,6 +6,7 @@ import {
   where,
   documentId,
   doc,
+  orderBy,
 } from "firebase/firestore";
 import { db } from "@/app/configs/firebase/firebase";
 import { CourseProps, VideoProps } from "@/app/api/courses/courses.interface";
@@ -101,7 +102,11 @@ export async function getUserSubscribedCourses(userId: string) {
 
 export async function getCourseVideosById(courseId: string) {
   const videosRef = collection(db, "videos");
-  const videosQuery = query(videosRef, where("course_id", "==", courseId));
+  const videosQuery = query(
+    videosRef,
+    where("course_id", "==", courseId),
+    orderBy("order")
+  );
   const querySnapshot = await getDocs(videosQuery);
   const videos = querySnapshot.docs.map((doc) => ({
     ...doc.data(),

@@ -7,7 +7,7 @@ export const Videos = async ({ id }: { id: string }) => {
   const queryClient = getQueryClient();
   if (id) {
     await queryClient.prefetchQuery({
-      queryKey: ["videos", id],
+      queryKey: [`/dashboard/courses/${id}`, id],
       queryFn: () => getCourseVideosById(id),
     });
   }
