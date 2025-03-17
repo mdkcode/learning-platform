@@ -12,6 +12,7 @@ export const VideoList = ({ id }: { id: string }) => {
 
   return (
     <div className="space-y-6">
+      <p className="text-2xl font-bold">Course Videos</p>
       {videos?.map(({ id: videoId, title, duration, video_url }) => (
         <div
           key={videoId}

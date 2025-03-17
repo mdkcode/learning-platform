@@ -28,6 +28,7 @@ export const MyCoursesList = () => {
             <Link
               label="View the course"
               href={`${Routes.COURSES}/${course.id}`}
+              dataCy="course-link"
             />
           </div>
         ))}
