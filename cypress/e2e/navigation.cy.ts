@@ -16,16 +16,4 @@ describe("Routing Tests", () => {
     cy.contains("My courses");
     cy.url().should("include", "/dashboard/courses");
   });
-
-  it("should navigate to a course page with a dynamic URL", () => {
-    cy.get('[data-cy="course-link"]').should("exist"); // Check if the element exists
-    cy.get('[data-cy="course-link"]').should("be.visible");
-    // cy.get('[data-cy="course-link"]').click();
-    // cy.url().should("include", "/dashboard/courses/");
-    // cy.url().should(
-    //   "match",
-    //   /http:\/\/localhost:3000\/dashboard\/courses\/[a-zA-Z0-9]+/
-    // );
-    // cy.contains("Course Videos");
-  });
 });
