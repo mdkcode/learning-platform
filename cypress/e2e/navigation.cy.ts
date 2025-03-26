@@ -1,14 +1,20 @@
+import { Routes } from "@/app/routes/routes";
+const VIEWPORTS = {
+  MOBILE: { width: 320, height: 480 },
+  TABLET: { width: 1024, height: 768 },
+};
+
 describe("Routing Tests", () => {
   it("Should visit the Home page", () => {
-    cy.visit("/");
+    cy.visit(Routes.HOME);
     cy.contains("Maximize skill, minimize budget");
     cy.contains("Check our most popular courses!");
-    cy.location("pathname").should("equal", "/");
+    cy.location("pathname").should("equal", Routes.HOME);
   });
 
   describe("Menu Navigation", () => {
     beforeEach(() => {
-      cy.visit("/dashboard");
+      cy.visit(Routes.DASHBOARD);
     });
 
     it("should render all Menu Links correctly", () => {
@@ -19,27 +25,27 @@ describe("Routing Tests", () => {
 
     it("should navigate to the Dashboard page when the Dashboard link is clicked", () => {
       cy.contains("Dashboard").click();
-      cy.location("pathname").should("equal", "/dashboard");
+      cy.location("pathname").should("equal", Routes.DASHBOARD);
     });
 
     it("should navigate to the My courses page when the My courses link is clicked", () => {
       cy.contains("My courses").click();
-      cy.location("pathname").should("equal", "/dashboard/courses");
+      cy.location("pathname").should("equal", Routes.COURSES);
     });
 
     it("should navigate to the Home page when the Exit link is clicked", () => {
       cy.contains("Exit").click();
-      cy.location("pathname").should("equal", "/");
+      cy.location("pathname").should("equal", Routes.HOME);
     });
   });
 
   describe("Responsive Layout", () => {
     beforeEach(() => {
-      cy.visit("/dashboard");
+      cy.visit(Routes.DASHBOARD);
     });
 
     it("should display MobileHeader and Links on mobile view", () => {
-      cy.viewport(320, 480);
+      cy.viewport(VIEWPORTS.MOBILE.width, VIEWPORTS.MOBILE.height);
       cy.get('[data-test="mobileHeader"]').should("be.visible");
       cy.get('[data-test="sidenav"]').should("not.be.visible");
       cy.get('[data-test="mobileMenuButton"]').click();
@@ -47,7 +53,7 @@ describe("Routing Tests", () => {
     });
 
     it("should display MobileHeader and SideNav on larger screens", () => {
-      cy.viewport(1024, 768);
+      cy.viewport(VIEWPORTS.TABLET.width, VIEWPORTS.TABLET.height);
       cy.get('[data-test="mobileHeader"]').should("not.be.visible");
       cy.get('[data-test="sidenav"]').should("be.visible");
     });
@@ -55,7 +61,7 @@ describe("Routing Tests", () => {
 
   describe("Search Functionality", () => {
     it("should update the URL with the search query", () => {
-      cy.visit("/dashboard");
+      cy.visit(Routes.DASHBOARD);
       cy.get('input[type="search"]').type("Physics", { delay: 110 });
       cy.get('input[type="search"]').should("have.value", "Physics");
       cy.url().should("include", "search=Physics");
@@ -64,9 +70,9 @@ describe("Routing Tests", () => {
 
   describe("Courses Page", () => {
     it("Should visit the Courses page", () => {
-      cy.visit("/dashboard/courses");
+      cy.visit(Routes.COURSES);
       cy.contains("My courses");
-      cy.location("pathname").should("equal", "/dashboard/courses");
+      cy.location("pathname").should("equal", Routes.COURSES);
     });
   });
 });
