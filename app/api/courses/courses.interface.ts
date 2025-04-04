@@ -8,7 +8,10 @@ export interface CourseProps {
   image_url: string;
   description: string;
   created_at: string;
-  duration: number; // in seconds
+  /*
+   * duration is in seconds
+   */
+  duration: number;
 }
 
 export interface VideoProps {
