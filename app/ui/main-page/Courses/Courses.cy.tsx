@@ -1,9 +1,9 @@
-import React from 'react'
-import Courses from './Courses'
+import React from "react";
+import Courses from "./Courses";
+import "@/app/globals.css";
 
-describe('<Courses />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<Courses />)
-  })
-})
+describe("<Courses />", () => {
+  it("renders", () => {
+    cy.mount(<Courses />);
+  });
+});
