@@ -7,7 +7,7 @@ export default function Search() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  const [query, setQuery] = useState(searchParams.get("search") || "");
+  const [query, setQuery] = useState(searchParams?.get("search") || "");
 
   const handleSearch = useDebouncedCallback((newQuery: string) => {
     setQuery(newQuery);

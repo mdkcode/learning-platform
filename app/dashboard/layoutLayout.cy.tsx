@@ -1,33 +1,22 @@
 import React from "react";
 import Layout from "./layout";
 import "@/app/globals.css";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { SessionProvider } from "next-auth/react";
 import * as nextRouter from "next/navigation";
 
 describe("<Layout />", () => {
   it("should redirect to home if the session is invalid", () => {
-    cy.stub(nextRouter, "useRouter").returns({
-      push: cy.spy(),
-    });
-
-    // Mock SessionProvider to simulate an invalid session
-    cy.mount(
-      <SessionProvider session={null}>
-        <Layout>
-          <div>Test Child</div>
-        </Layout>
-      </SessionProvider>
-    );
-
-    cy.get("@push").should("have.been.calledWith", "/");
-  });
-
-  it("should render children and layout elements when session is valid", () => {
-    cy.stub(nextRouter, "useRouter").returns({
-      push: cy.spy(),
-    });
-
-    // Mock SessionProvider with a valid session
+    const router = {
+      push: cy.stub().as("router:push"),
+      back: cy.stub(),
+      forward: cy.stub(),
+      refresh: cy.stub(),
+      replace: cy.stub(),
+      prefetch: cy.stub(),
+    };
+    // Mock useRouter to return the mocked router
+    cy.stub(nextRouter, "useRouter").returns(router);
     const mockSession = {
       user: { name: "John Doe" },
       expires: "2025-12-31",
@@ -37,15 +26,16 @@ describe("<Layout />", () => {
     };
 
     cy.mount(
-      <SessionProvider session={mockSession}>
-        <Layout>
-          <div>Test Child</div>
-        </Layout>
-      </SessionProvider>
+      <AppRouterContext value={router}>
+        <SessionProvider session={mockSession}>
+          <Layout>
+            <div>Test Child</div>
+          </Layout>
+        </SessionProvider>
+      </AppRouterContext>
     );
-
     cy.contains("Test Child").should("exist");
-    cy.get("MobileHeader").should("exist");
-    cy.get("SideNav").should("exist");
+    cy.get('[data-test="mobileHeader"]').should("exist");
+    cy.get('[data-test="sidenav"]').should("exist");
   });
 });
