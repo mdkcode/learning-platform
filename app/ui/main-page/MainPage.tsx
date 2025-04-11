@@ -30,7 +30,7 @@ const MainPage = () => {
           className="absolute right-10  top-0"
         />
         <div className="h-auto w-full max-w-[400px] lg:max-w-[700px]">
-          <ReadingImg className="w-full h-auto" />
+          <ReadingImg className="w-full h-auto" data-test="mainPageImage" />
         </div>
         <Stats
           label="Courses"

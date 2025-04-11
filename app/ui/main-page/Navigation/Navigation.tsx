@@ -12,11 +12,7 @@ export interface NavigationProps {
   buttonType?: ButtonType;
 }
 
-const Navigation = ({
-  className,
-  buttonClassName,
-  buttonType,
-}: NavigationProps) => {
+const Navigation = ({ className, buttonClassName }: NavigationProps) => {
   return (
     <div
       className={clsx(
