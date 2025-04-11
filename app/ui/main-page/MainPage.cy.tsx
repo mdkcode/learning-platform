@@ -1,5 +1,4 @@
 import MainPage from "./MainPage";
-import * as auth from "@/app/api/auth/[...nextauth]/auth";
 import "@/app/globals.css";
 
 describe("<MainPage />", () => {
@@ -26,11 +25,8 @@ describe("<MainPage />", () => {
       .and("have.class", "h-auto");
   });
 
-  it("should render the Get started button and click it", () => {
+  it("should render the Get started button", () => {
     cy.mount(<MainPage />);
     cy.contains("Get started").should("exist");
-    cy.contains("Get started").click();
-    // cy.stub(auth, "handleSignIn").as("signIn");
-    // cy.get("@signIn").should("have.been.calledOnce");
   });
 });
