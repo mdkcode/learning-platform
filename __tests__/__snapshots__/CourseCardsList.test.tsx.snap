@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CourseCard > matches snapshot with a course 1`] = `
+<div>
+  <div
+    class="w-[400px] inline-block rounded-lg p-5 bg-gradient-to-b bg-gray-200 
+      relative cursor-pointer transition-all duration-300 transform 
+      hover:scale-105 hover:shadow-lg hover:from-gray-200"
+  >
+    <h3
+      class="text-xl font-bold my-2"
+    >
+      React Basics
+    </h3>
+    <p
+      class="mb-8"
+    >
+      Learn the basics of React.js
+    </p>
+    <div
+      class="absolute bottom-3"
+    >
+      <p
+        class="text-lg text-blue-500"
+      >
+        Subscribe
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CourseCardsList > matches snapshot with courses 1`] = `
+<div>
+  <div
+    class="flex gap-5 flex-wrap"
+  >
+    <div
+      class="w-[400px] inline-block rounded-lg p-5 bg-gradient-to-b bg-gray-200 
+      relative cursor-pointer transition-all duration-300 transform 
+      hover:scale-105 hover:shadow-lg hover:from-gray-200"
+    >
+      <h3
+        class="text-xl font-bold my-2"
+      >
+        React Basics
+      </h3>
+      <p
+        class="mb-8"
+      >
+        Learn the basics of React.js
+      </p>
+      <div
+        class="absolute bottom-3"
+      >
+        <p
+          class="text-lg text-blue-500"
+        >
+          Subscribe
+        </p>
+      </div>
+    </div>
+    <div
+      class="w-[400px] inline-block rounded-lg p-5 bg-gradient-to-b bg-gray-200 
+      relative cursor-pointer transition-all duration-300 transform 
+      hover:scale-105 hover:shadow-lg hover:from-gray-200"
+    >
+      <h3
+        class="text-xl font-bold my-2"
+      >
+        Advanced TypeScript
+      </h3>
+      <p
+        class="mb-8"
+      >
+        Deep dive into TypeScript features
+      </p>
+      <div
+        class="absolute bottom-3"
+      >
+        <p
+          class="text-lg text-blue-500"
+        >
+          Subscribe
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CourseCardsList > matches snapshot with no courses 1`] = `
+<div>
+  <div
+    class="flex gap-5 flex-wrap"
+  />
+</div>
+`;

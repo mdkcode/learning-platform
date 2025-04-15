@@ -48,7 +48,7 @@ describe("Routing Tests", () => {
       cy.viewport(VIEWPORTS.MOBILE.width, VIEWPORTS.MOBILE.height);
       cy.get('[data-test="mobileHeader"]').should("be.visible");
       cy.get('[data-test="sidenav"]').should("not.be.visible");
-      cy.get('[data-test="mobileMenuButton"]').click();
+      cy.get('[data-testid="mobileMenuButton"]').click();
       cy.get('[data-test="mobileMenuRoutes"]').should("exist");
     });
 

@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserGreeting > matches snapshot with user name 1`] = `
+<div>
+  <h1
+    class="my-5 text-3xl font-bold"
+  >
+    Welcome, 
+    Alice
+  </h1>
+</div>
+`;
+
+exports[`UserGreeting > matches snapshot without user name 1`] = `
+<div>
+  <h1
+    class="my-5 text-3xl font-bold"
+  >
+    Welcome, 
+  </h1>
+</div>
+`;

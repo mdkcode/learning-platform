@@ -14,7 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "types": ["cypress"],
+    "types": ["cypress", "vitest/globals"],
     "plugins": [
       {
         "name": "next"
@@ -30,7 +30,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "tests"
   ],
   "exclude": ["node_modules"]
 }
