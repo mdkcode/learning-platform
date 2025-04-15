@@ -4,7 +4,14 @@ import * as reactQuery from "@tanstack/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 describe("<MyCoursesList />", () => {
-  const queryClient = new QueryClient();
+  const createQueryClient = () => new QueryClient();
+  const mountWithQueryClient = (ui: React.ReactNode) => {
+    const queryClient = createQueryClient();
+    return cy.mount(
+      <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
+    );
+  };
+
   it("should show loading state when data is still being fetched", () => {
     cy.stub(nextAuth, "useSession").returns({
       data: { userId: "user123" },
@@ -15,11 +22,7 @@ describe("<MyCoursesList />", () => {
       data: null,
       isLoading: true,
     });
-    cy.mount(
-      <QueryClientProvider client={queryClient}>
-        <MyCoursesList />
-      </QueryClientProvider>
-    );
+    mountWithQueryClient(<MyCoursesList />);
     cy.contains("Loading...").should("exist");
   });
 
@@ -32,11 +35,7 @@ describe("<MyCoursesList />", () => {
       data: [],
       isLoading: false,
     });
-    cy.mount(
-      <QueryClientProvider client={queryClient}>
-        <MyCoursesList />
-      </QueryClientProvider>
-    );
+    mountWithQueryClient(<MyCoursesList />);
     cy.contains("My courses").should("exist");
     cy.get("a").should("not.exist");
   });
@@ -55,11 +54,7 @@ describe("<MyCoursesList />", () => {
       data: mockCourses,
       isLoading: false,
     });
-    cy.mount(
-      <QueryClientProvider client={queryClient}>
-        <MyCoursesList />
-      </QueryClientProvider>
-    );
+    mountWithQueryClient(<MyCoursesList />);
     cy.contains("Course 1").should("exist");
     cy.contains("Course 2").should("exist");
     cy.get("a").should("have.length", 2);
