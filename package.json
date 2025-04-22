@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
+    "coverage": "vitest run --coverage",
     "cy:open": "cypress open --config baseUrl=https://learning-platform-opal.vercel.app/",
     "cy:dev": "cypress open --config baseUrl=http://localhost:3000/",
     "dev": "next dev --turbopack",
