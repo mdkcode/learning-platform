@@ -23,12 +23,18 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Lint code
+      run: npm run lint
+
+    - name: Run tests
+      run: npm test
+
     # Set environment variables for Google OAuth
     - name: Set Google OAuth environment variables
       run: |
         echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> $GITHUB_ENV
         echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> $GITHUB_ENV
-        
+
     # Build Next.js app
     - name: Build
       run: npm run build
