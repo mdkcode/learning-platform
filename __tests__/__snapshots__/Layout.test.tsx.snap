@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Layout > matches snapshot when session is valid 1`] = `
+<div>
+  <div
+    class="flex flex-col md:h-screen md:flex-row"
+  >
+    <div
+      data-testid="mobile-header"
+    >
+      MobileHeader
+    </div>
+    <div
+      data-testid="side-nav"
+    >
+      SideNav
+    </div>
+    <div
+      class="flex-grow p-6 md:overflow-y-auto md:p-12"
+    >
+      <div>
+        Test Child
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MobileHeader > matches snapshot when menu is closed 1`] = `
+<div>
+  <div
+    class="bg-[#00004B] flex justify-between items-center md:hidden p-5"
+    data-test="mobileHeader"
+  >
+    <h1
+      class="text-2xl font-bold my-1 bg-gradient-to-r from-orange-400 to-pink-500 inline-block text-transparent bg-clip-text"
+    >
+      SkillEd
+    </h1>
+    <button
+      data-testid="mobileMenuButton"
+    >
+      <svg
+        aria-hidden="true"
+        class="w-6 h-6 text-black-500 text-white"
+        data-slot="icon"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`MobileHeader > matches snapshot when menu is open 1`] = `
+<div>
+  <div
+    class="bg-[#00004B] flex justify-between items-center md:hidden p-5"
+    data-test="mobileHeader"
+  >
+    <h1
+      class="text-2xl font-bold my-1 bg-gradient-to-r from-orange-400 to-pink-500 inline-block text-transparent bg-clip-text"
+    >
+      SkillEd
+    </h1>
+    <button
+      data-testid="mobileMenuButton"
+    >
+      <svg
+        aria-hidden="true"
+        class="w-6 h-6 text-black-500 text-white"
+        data-slot="icon"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;

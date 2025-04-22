@@ -14,7 +14,7 @@ export function MobileHeader() {
       >
         <Logo />
         <button
-          data-test="mobileMenuButton"
+          data-testid="mobileMenuButton"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <Icon name={isOpen ? "close" : "hamburger"} className="text-white" />

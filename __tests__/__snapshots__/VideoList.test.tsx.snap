@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`VideoList > matches snapshot with no videos 1`] = `
+<div>
+  <div
+    class="space-y-6"
+  >
+    <p
+      class="text-2xl font-bold"
+    >
+      Course Videos
+    </p>
+  </div>
+</div>
+`;
+
+exports[`VideoList > matches snapshot with videos 1`] = `
+<div>
+  <div
+    class="space-y-6"
+  >
+    <p
+      class="text-2xl font-bold"
+    >
+      Course Videos
+    </p>
+    <div
+      class="bg-white p-4 rounded-lg shadow-md max-w-3xl sm:max-w-4xl md:max-w-5xl border border-gray-200"
+    >
+      <div
+        class="flex items-center justify-between mb-4"
+      >
+        <h3
+          class="text-xl font-semibold text-gray-800"
+        >
+          Introduction to the Course
+        </h3>
+        <p
+          class="text-gray-500"
+        >
+          Duration: Approximately 10 minutes
+        </p>
+      </div>
+      <div
+        class="relative w-full h-0 pb-[56.25%] mb-4"
+      >
+        <video
+          class="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+          controls=""
+          src="https://example.com/video1.mp4"
+        />
+      </div>
+    </div>
+    <div
+      class="bg-white p-4 rounded-lg shadow-md max-w-3xl sm:max-w-4xl md:max-w-5xl border border-gray-200"
+    >
+      <div
+        class="flex items-center justify-between mb-4"
+      >
+        <h3
+          class="text-xl font-semibold text-gray-800"
+        >
+          Deep Dive into React
+        </h3>
+        <p
+          class="text-gray-500"
+        >
+          Duration: Approximately 15 minutes
+        </p>
+      </div>
+      <div
+        class="relative w-full h-0 pb-[56.25%] mb-4"
+      >
+        <video
+          class="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+          controls=""
+          src="https://example.com/video2.mp4"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
