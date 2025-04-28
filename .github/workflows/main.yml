@@ -3,50 +3,51 @@ name: Deploy Next.js app
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Set up Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'  
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
 
-    # Install dependencies
-    - name: Install dependencies
-      run: npm install
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
 
-    - name: Lint code
-      run: npm run lint
+      - name: Lint code
+        run: npm run lint
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
 
-    # Set environment variables for Google OAuth
-    - name: Set Google OAuth environment variables
-      run: |
-        echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> $GITHUB_ENV
-        echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> $GITHUB_ENV
+      # Set environment variables for Google OAuth
+      - name: Set Google OAuth environment variables
+        run: |
+          echo "GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> $GITHUB_ENV
 
-    # Build Next.js app
-    - name: Build
-      run: npm run build
+      # Build Next.js app
+      - name: Build
+        run: npm run build
 
-    #INSTALL VERCEL CLI IN SERVER.
-    - name: Install Vercel CLI
-    run: npm install –global vercel@latest
-    
-    - name: Pull Vercel Environment Information
-    run: vercel pull –yes –environment=development –token=${{ secrets.VERCEL_TOKEN }}
-    - name: Build Project Artifacts
-    run: vercel build –prod –token=${{ secrets.VERCEL_TOKEN }}
-    - name: Deploy Project Artifacts to Vercel
-    run: vercel deploy –prebuilt –prod –token=${{ secrets.VERCEL_TOKEN }}
+      #INSTALL VERCEL CLI IN SERVER.
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=development --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
